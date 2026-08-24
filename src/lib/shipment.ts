@@ -101,10 +101,10 @@ export const shipment = {
 		}
 	} as Record<string, EventPerson>,
 	current: {
-		status: 'Held by Bapak Paket',
-		location: 'Kelapa Gading',
+		status: 'Held by Receptionist',
+		location: 'Apartemen Fatmawati, Jakarta Selatan',
 		date: 'Aug 24, 2026',
-		time: '10:00 WIB',
+		time: '11:20 WIB',
 		message: 'The shipment is secure and awaiting its next scheduled hand-off.'
 	},
 	events: [
@@ -134,13 +134,14 @@ export const shipment = {
 		{
 			id: 'fatmawati',
 			date: 'Aug 24',
-			time: '11:15 WIB',
+			time: '11:20 WIB',
 			from: 'Bapak paket',
 			to: 'Receptionist, Apartemen Fatmawati',
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
 			caption:
 				'Bapak Paket marches the tumblers toward the front desk like a prisoner exchange. Identity: classified.',
-			status: 'scheduled'
+      status: 'completed',
+      proofImage: '/images/proof-fatmawati.jpg',
 		},
 		{
 			id: 'reception-rj',
