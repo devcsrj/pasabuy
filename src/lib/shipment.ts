@@ -66,7 +66,7 @@ export const shipment = {
 		},
 		luggage: {
 			name: 'RJ',
-			avatar: '/images/crew/rj.jpg',
+			avatar: '/images/crew/clara.jpg',
 			alt: "RJ, packing the shipment into his luggage"
 		},
 		airport: {
@@ -101,10 +101,10 @@ export const shipment = {
 		}
 	} as Record<string, EventPerson>,
 	current: {
-		status: 'Held by Receptionist',
+		status: 'Held by RJ',
 		location: 'Apartemen Fatmawati, Jakarta Selatan',
 		date: 'Aug 24, 2026',
-		time: '11:20 WIB',
+		time: '12:13 WIB',
 		message: 'The shipment is secure and awaiting its next scheduled hand-off.'
 	},
 	events: [
@@ -146,22 +146,24 @@ export const shipment = {
 		{
 			id: 'reception-rj',
 			date: 'Aug 24',
-			time: '11:45 WIB',
+			time: '12:10 WIB',
 			from: 'Receptionist, Apartemen Fatmawati',
 			to: 'RJ',
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
 			caption: 'Receptionist hands off. RJ receives two tumblers and zero context.',
-			status: 'scheduled'
+      status: 'completed',
+      proofImage: '/images/proof-fatma_lobby.jpg',
 		},
 		{
 			id: 'lobby-rj-room',
 			date: 'Aug 24',
-			time: '11:48 WIB',
+			time: '12:13 WIB',
 			from: 'Lobby, Apartemen Fatmawati',
 			to: "RJ's room",
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
 			caption: 'RJ sneaks the package upstairs past a security detail of exactly nobody.',
-			status: 'scheduled'
+			status: 'completed',
+			proofImage: '/images/proof-fatma_room.jpg',
 		},
 		{
 			id: 'luggage',
