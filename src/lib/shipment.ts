@@ -134,7 +134,7 @@ export const shipment = {
 		{
 			id: 'fatmawati',
 			date: 'Aug 24',
-			time: '21:15 WIB',
+			time: '11:15 WIB',
 			from: 'Bapak paket',
 			to: 'Receptionist, Apartemen Fatmawati',
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
@@ -145,7 +145,7 @@ export const shipment = {
 		{
 			id: 'reception-rj',
 			date: 'Aug 24',
-			time: '21:32 WIB',
+			time: '11:45 WIB',
 			from: 'Receptionist, Apartemen Fatmawati',
 			to: 'RJ',
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
@@ -155,7 +155,7 @@ export const shipment = {
 		{
 			id: 'lobby-rj-room',
 			date: 'Aug 24',
-			time: '21:35 WIB',
+			time: '11:48 WIB',
 			from: 'Lobby, Apartemen Fatmawati',
 			to: "RJ's room",
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
