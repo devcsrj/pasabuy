@@ -10,6 +10,17 @@
 	);
 	let totalEvents = $derived(trackedShipment?.events.length ?? 1);
 	let progress = $derived(Math.round((completedCount / totalEvents) * 100));
+	let latestCompletedId = $derived(
+		trackedShipment?.events.filter((event) => event.status === 'completed').at(-1)?.id
+	);
+
+	let proofDialog: HTMLDialogElement | undefined = $state();
+	let proofDialogSrc: string | undefined = $state();
+
+	function openProof(src: string) {
+		proofDialogSrc = src;
+		proofDialog?.showModal();
+	}
 </script>
 
 <svelte:head>
@@ -119,6 +130,7 @@
 						<li
 							class:completed={event.status === 'completed'}
 							class:day-end={isLastOfDay}
+							class:latest-completed={event.id === latestCompletedId}
 							class="event-row"
 						>
 							<div class="event-marker" aria-hidden="true">
@@ -134,6 +146,31 @@
 								<h3>{event.from} <b aria-hidden="true">→</b> {event.to}</h3>
 								<p class="event-location"><span aria-hidden="true">📍</span>{event.location}</p>
 								<p class="event-caption">{event.caption}</p>
+								{#if event.proofImage}
+									<div class="event-proof">
+										<button
+											type="button"
+											class="event-proof-trigger"
+											onclick={() => openProof(asset(event.proofImage ?? ''))}
+										>
+											<img
+												src={asset(event.proofImage)}
+												alt={`Proof photo for ${event.from} to ${event.to}`}
+											/>
+											<span>View proof photo</span>
+										</button>
+										{#if event.proofLink}
+											<a
+												class="event-proof-link"
+												href={event.proofLink}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												View on Grab <span aria-hidden="true">↗</span>
+											</a>
+										{/if}
+									</div>
+								{/if}
 								{#if trackedShipment.eventPeople[event.id]}
 									<div class="event-person">
 										{#if trackedShipment.eventPeople[event.id].avatarEmoji}
@@ -156,6 +193,14 @@
 			</section>
 		</div>
 	</main>
+	<dialog bind:this={proofDialog} class="proof-dialog">
+		<button type="button" class="proof-dialog-close" onclick={() => proofDialog?.close()}
+			>✕</button
+		>
+		{#if proofDialogSrc}
+			<img src={proofDialogSrc} alt="Custody handover proof" />
+		{/if}
+	</dialog>
 {:else}
 	<main class="not-found-page">
 		<section class="not-found-card" aria-labelledby="not-found-title">
@@ -507,7 +552,7 @@
 		gap: 5px;
 		margin: 6px 0 0;
 	}
-	.completed.event-row:not(:last-child):not(.day-end)::after {
+	.latest-completed.event-row:not(:last-child):not(.day-end)::after {
 		animation: travel-dot 1.8s ease-in-out infinite;
 		background: #ef5b2a;
 		border-radius: 50%;
@@ -535,7 +580,7 @@
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.completed.event-row:not(:last-child)::after {
+		.latest-completed.event-row:not(:last-child)::after {
 			animation: none;
 			opacity: 1;
 			top: 31px;
@@ -616,6 +661,75 @@
 		gap: 9px;
 		margin-top: 17px;
 		padding: 7px 10px 7px 7px;
+	}
+	.event-proof {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 17px;
+	}
+	.event-proof-trigger {
+		align-items: center;
+		background: #f3f0e8;
+		border: none;
+		border-left: 2px solid #ef5b2a;
+		color: #ef5b2a;
+		cursor: pointer;
+		display: inline-flex;
+		font: inherit;
+		gap: 9px;
+		padding: 7px 10px 7px 7px;
+	}
+	.event-proof-trigger img {
+		border-radius: 4px;
+		display: block;
+		height: 30px;
+		object-fit: cover;
+		width: 30px;
+	}
+	.event-proof-trigger span {
+		font-size: 11px;
+		font-weight: 600;
+	}
+	.event-proof-link {
+		color: #77746c;
+		font:
+			10px 'DM Mono',
+			monospace;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+	.event-proof-link:hover {
+		color: #ef5b2a;
+	}
+	.proof-dialog {
+		background: transparent;
+		border: none;
+		max-width: min(90vw, 640px);
+		padding: 0;
+	}
+	.proof-dialog::backdrop {
+		background: #252524d9;
+	}
+	.proof-dialog img {
+		display: block;
+		max-height: 85vh;
+		max-width: 100%;
+	}
+	.proof-dialog-close {
+		background: #252524;
+		border: none;
+		border-radius: 50%;
+		color: #fffdf8;
+		cursor: pointer;
+		font-size: 14px;
+		height: 32px;
+		position: absolute;
+		right: -12px;
+		top: -12px;
+		width: 32px;
 	}
 	.event-person img,
 	.event-avatar-emoji {

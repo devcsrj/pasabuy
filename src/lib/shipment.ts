@@ -7,6 +7,8 @@ export type ShipmentEvent = {
 	location: string;
 	caption: string;
 	status: 'completed' | 'scheduled';
+	proofImage?: string;
+	proofLink?: string;
 };
 
 export type EventPerson = {
@@ -99,16 +101,16 @@ export const shipment = {
 		}
 	} as Record<string, EventPerson>,
 	current: {
-		status: 'Held by Andreas',
+		status: 'Held by Bapak Paket',
 		location: 'Kelapa Gading',
 		date: 'Aug 24, 2026',
-		time: '20:00 WIB',
+		time: '10:00 WIB',
 		message: 'The shipment is secure and awaiting its next scheduled hand-off.'
 	},
 	events: [
 		{
 			id: 'address',
-			date: 'Aug 24',
+			date: 'Aug 23',
 			time: '19:10 WIB',
 			from: 'Clara',
 			to: 'Andreas',
@@ -119,13 +121,15 @@ export const shipment = {
 		{
 			id: 'custody',
 			date: 'Aug 24',
-			time: '20:00 WIB',
+			time: '10:00 WIB',
 			from: 'Andreas',
 			to: 'Bapak paket',
 			location: 'Kelapa Gading, Jakarta Utara',
 			caption:
 				"Andreas offloads the tumblers to a man known only as 'Bapak Paket.' No further questions asked, no receipt given.",
-			status: 'scheduled'
+			status: 'completed',
+			proofImage: '/images/proof-custody.jpg',
+			proofLink: 'https://express.grab.com/Gu_9lDwk1oLi-UEa0F9_UgRwOCiKTF8GpFa6qc0wPPA='
 		},
 		{
 			id: 'fatmawati',
