@@ -102,9 +102,9 @@ export const shipment = {
 	} as Record<string, EventPerson>,
 	current: {
 		status: 'Held by RJ',
-		location: 'Apartemen Fatmawati, Jakarta Selatan',
-		date: 'Aug 24, 2026',
-		time: '12:13 WIB',
+		location: 'Apartment, Angeles City',
+		date: 'Aug 26, 2026',
+		time: '08:00 PHT',
 		message: 'The shipment is secure and awaiting its next scheduled hand-off.'
 	},
 	events: [
@@ -173,7 +173,7 @@ export const shipment = {
 			to: "RJ's Luggage",
 			location: 'Apartemen Fatmawati, Jakarta Selatan',
 			caption: 'Tumblers wedged between three days of dirty socks. TSA will have questions.',
-			status: 'scheduled'
+			status: 'completed'
 		},
 		{
 			id: 'airport',
@@ -183,37 +183,37 @@ export const shipment = {
 			to: 'CGK',
 			location: 'Soekarno–Hatta Intl (CGK), Jakarta',
 			caption: 'Pre-dawn departure. RJ reconsiders every decision that led to this bag.',
-			status: 'scheduled'
+			status: 'completed'
 		},
 		{
 			id: 'singapore',
 			date: 'Aug 25',
-			time: 'Pending',
+			time: 'Completed',
 			from: 'CGK',
 			to: 'SIN',
 			location: 'Changi Airport (SIN), Singapore',
 			caption: 'Somewhere over the Java Sea, two tumblers achieve main-character altitude.',
-			status: 'scheduled'
+			status: 'completed'
 		},
 		{
 			id: 'crk',
 			date: 'Aug 25',
-			time: 'Pending',
+			time: '01:55 PHT',
 			from: 'SIN',
 			to: 'CRK',
 			location: 'Clark Intl (CRK), Pampanga',
 			caption: "3h40m of turbulence, snacks, and a silent prayer the lids don't pop.",
-			status: 'scheduled'
+			status: 'completed'
 		},
 		{
 			id: 'pandan',
 			date: 'Aug 26',
-			time: '10:00 PHT',
+			time: '08:00 PHT',
 			from: 'CRK',
 			to: 'Apartment, Pandan',
 			location: 'Pandan, Angeles City',
 			caption: 'Back on Philippine soil. Customs has no idea what crimes these tumblers committed.',
-			status: 'scheduled'
+			status: 'completed'
 		},
 		{
 			id: 'marquee',
