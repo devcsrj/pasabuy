@@ -9,6 +9,7 @@ export type ShipmentEvent = {
 	status: 'completed' | 'scheduled';
 	proofImage?: string;
 	proofLink?: string;
+	linkLabel?: string;
 };
 
 export type EventPerson = {
@@ -92,7 +93,7 @@ export const shipment = {
 		marquee: {
 			name: 'RJ',
 			avatar: '/images/crew/rj.jpg',
-			alt: 'RJ, dropping off the shipment at LBC Marquee'
+			alt: 'RJ, dropping off the shipment at JRS Express'
 		},
 		grove: {
 			name: 'Javi',
@@ -101,11 +102,11 @@ export const shipment = {
 		}
 	} as Record<string, EventPerson>,
 	current: {
-		status: 'Held by RJ',
-		location: 'Apartment, Angeles City',
+		status: 'Shipped via JRS Express',
+		location: 'Angeles City',
 		date: 'Aug 26, 2026',
-		time: '08:00 PHT',
-		message: 'The shipment is secure and awaiting its next scheduled hand-off.'
+		time: '12:00 PHT',
+		message: 'The shipment is secure and awaiting the last mile delivery.'
 	},
 	events: [
 		{
@@ -129,7 +130,8 @@ export const shipment = {
 				"Andreas offloads the tumblers to a man known only as 'Bapak Paket.' No further questions asked, no receipt given.",
 			status: 'completed',
 			proofImage: '/images/proof-custody.jpg',
-			proofLink: 'https://express.grab.com/Gu_9lDwk1oLi-UEa0F9_UgRwOCiKTF8GpFa6qc0wPPA='
+			proofLink: 'https://express.grab.com/Gu_9lDwk1oLi-UEa0F9_UgRwOCiKTF8GpFa6qc0wPPA=',
+			linkLabel: 'View on Grab'
 		},
 		{
 			id: 'fatmawati',
@@ -220,17 +222,19 @@ export const shipment = {
 			date: 'Aug 27',
 			time: '11:30 PHT',
 			from: 'Apartment, Pandan',
-			to: 'LBC Marquee',
-			location: 'LBC Marquee, Angeles City',
+			to: 'JRS Express',
+			location: 'JRS Express, Angeles City',
 			caption:
 				'One counter between RJ and being done carrying someone else\'s hydration equipment.',
-			status: 'scheduled'
+			status: 'completed',
+			proofLink: 'https://www.jrs-express.com/track?or=9573482538478576',
+			linkLabel: 'Track on JRS Express'
 		},
 		{
 			id: 'grove',
 			date: 'Aug 27',
 			time: 'Pending',
-			from: 'LBC Angeles',
+			from: 'JRS Express',
 			to: 'Grove, Pasig',
 			location: 'The Grove, Pasig City',
 			caption: 'Javi receives the goods. Mission accomplished. Rate 5 stars pls.',

@@ -146,19 +146,21 @@
 								<h3>{event.from} <b aria-hidden="true">→</b> {event.to}</h3>
 								<p class="event-location"><span aria-hidden="true">📍</span>{event.location}</p>
 								<p class="event-caption">{event.caption}</p>
-								{#if event.proofImage}
+								{#if event.proofImage || event.proofLink}
 									<div class="event-proof">
-										<button
-											type="button"
-											class="event-proof-trigger"
-											onclick={() => openProof(asset(event.proofImage ?? ''))}
-										>
-											<img
-												src={asset(event.proofImage)}
-												alt={`Proof photo for ${event.from} to ${event.to}`}
-											/>
-											<span>View proof photo</span>
-										</button>
+										{#if event.proofImage}
+											<button
+												type="button"
+												class="event-proof-trigger"
+												onclick={() => openProof(asset(event.proofImage ?? ''))}
+											>
+												<img
+													src={asset(event.proofImage)}
+													alt={`Proof photo for ${event.from} to ${event.to}`}
+												/>
+												<span>View proof photo</span>
+											</button>
+										{/if}
 										{#if event.proofLink}
 											<a
 												class="event-proof-link"
@@ -166,7 +168,7 @@
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												View on Grab <span aria-hidden="true">↗</span>
+												{event.linkLabel ?? 'View link'} <span aria-hidden="true">↗</span>
 											</a>
 										{/if}
 									</div>
